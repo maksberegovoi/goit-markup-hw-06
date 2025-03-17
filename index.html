@@ -20,21 +20,30 @@
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body class="page">
-    <header class="header hide">
+    <header class="header">
       <div class="container">
         <nav class="header-nav">
           <a class="logo" href="./index.html"
             >Web<span class="logo-accent">Studio</span>
           </a>
-          <ul class="header-menu">
-            <li class="header-menu-item">
-              <a class="header-menu-link active" href="./index.html">Studio</a>
+          <button
+            type="button"
+            class="header-menu-button"
+            aria-label="Open menu button"
+          >
+            <svg class="menu-button-icon" width="24" height="24">
+              <use href="./images/icons.svg#header-menu"></use>
+            </svg>
+          </button>
+          <ul class="header-nav-list">
+            <li class="header-nav-item">
+              <a class="header-nav-link active" href="./index.html">Studio</a>
             </li>
-            <li class="header-menu-item">
-              <a class="header-menu-link" href="">Portfolio</a>
+            <li class="header-nav-item">
+              <a class="header-nav-link" href="">Portfolio</a>
             </li>
-            <li class="header-menu-item">
-              <a class="header-menu-link" href="">Contacts</a>
+            <li class="header-nav-item">
+              <a class="header-nav-link" href="">Contacts</a>
             </li>
           </ul>
         </nav>
@@ -55,7 +64,7 @@
       </div>
     </header>
     <main>
-      <section class="hero section hide">
+      <section class="hero section">
         <div class="container">
           <h1 class="hero-title">Effective Solutions for Your Business</h1>
           <button class="btn" type="button">Order Service</button>
@@ -608,7 +617,7 @@
         </div>
       </div>
     </footer>
-    <div class="modal-overlay hide">
+    <div class="modal-overlay">
       <div class="modal">
         <button type="button" class="modal-close-button">
           <svg class="modal-close-icon" width="8" height="8">
@@ -697,6 +706,96 @@
           <!--#endregion-->
           <button type="submit" class="btn">Send</button>
         </form>
+      </div>
+    </div>
+    <div class="backdrop ">
+      <div class="mobile-menu">
+        <button type="button" class="mobile-menu-button">
+          <svg class="mobile-button-icon" width="8" height="8">
+            <use href="./images/icons.svg#close"></use>
+          </svg>
+        </button>
+        <ul class="mobile-menu-links">
+          <li class="mobile-list-item">
+            <a class="mobile-menu-link active" href="./index.html">Studio</a>
+          </li>
+          <li class="mobile-list-item">
+            <a class="mobile-menu-link" href="">Portfolio</a>
+          </li>
+          <li class="mobile-list-item">
+            <a class="mobile-menu-link" href="">Contacts</a>
+          </li>
+        </ul>
+        <ul class="contacts-menu mobile-contacts-menu">
+          <li class="contacts-menu-item mobile-contacts-item">
+            <a
+              class="contacts-menu-link mobile-contacts-link"
+              href="mailto:info@devstudio.com"
+              >info@devstudio.com</a
+            >
+          </li>
+          <li class="contacts-menu-item mobile-contacts-item">
+            <a
+              class="contacts-menu-link mobile-contacts-link"
+              href="tel:+110001111111"
+              >+11 (000) 111-11-11</a
+            >
+          </li>
+        </ul>
+        <ul class="social-list mobile-social-list">
+          <li class="social-list-item">
+            <a
+              class="social-link"
+              href="https://www.instagram.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Link to Instagram"
+            >
+              <svg class="social-icon" width="16" height="16">
+                <use href="./images/icons.svg#instagram"></use>
+              </svg>
+            </a>
+          </li>
+          <li class="social-list-item">
+            <a
+              class="social-link"
+              href="https://www.x.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Link to Twitter"
+            >
+              <svg class="social-icon" width="16" height="16">
+                <use href="./images/icons.svg#twitter"></use>
+              </svg>
+            </a>
+          </li>
+          <li class="social-list-item">
+            <a
+              class="social-link"
+              href="https://www.facebook.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Link to Facebook"
+            >
+              <svg class="social-icon" width="16" height="16">
+                <use href="./images/icons.svg#facebook"></use>
+              </svg>
+            </a>
+          </li>
+          <li class="social-list-item">
+            <a
+              class="social-link"
+              href="https://ua.linkedin.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Link to Linkedin"
+            >
+              <svg class="social-icon" width="16" height="16">
+                <use href="./images/icons.svg#linkedin"></use>
+              </svg>
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
   </body>

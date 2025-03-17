@@ -65,6 +65,7 @@ img {
   display: block;
   max-width: 100%;
   margin: 0 auto;
+  object-fit: cover;
 }
 
 a {
@@ -77,8 +78,8 @@ a {
   margin: 0 auto;
   padding: 0 16px;
 
-  outline: 2px solid red;
-  outline-offset: -2px;
+  /* outline: 2px solid red;
+  outline-offset: -2px; */
 
   @media screen and (min-width: 768px) {
     max-width: 768px;
@@ -127,15 +128,54 @@ body {
 }
 /* #endregion */
 
-/* #region Hedaer */
+/* #region Header */
 .header {
+  position: sticky;
+  top: -1px;
+  background-color: var(--white);
+  z-index: 998;
   border-bottom: 1px solid var(--cornflower);
 
   box-shadow: 0px 2px 1px 0px rgba(46, 47, 66, 0.08),
     0px 1px 1px 0px rgba(46, 47, 66, 0.16),
     0px 1px 6px 0px rgba(46, 47, 66, 0.08);
 }
-.header-menu-link {
+
+.header .container {
+  display: flex;
+  align-items: center;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-grow: 1;
+}
+
+.header-menu-button {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+}
+.menu-button-icon {
+  width: 24px;
+  height: 24px;
+
+  fill: #2f2f37;
+}
+
+.header-nav-link {
   font-style: normal;
   font-weight: 500;
   line-height: 1.5;
@@ -150,25 +190,31 @@ body {
   transition-property: color;
 }
 
-.header-menu-link:hover,
-.header-menu-link:focus {
+.header-nav-link:hover,
+.header-nav-link:focus,
+.mobile-menu-link:focus {
   color: var(--ocean);
 }
 
-.header-menu {
+.header-nav-list {
   list-style: none;
   display: flex;
   gap: 40px;
+
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
 }
 
-.header-menu-link {
+.header-nav-link {
   position: relative;
 }
 
-.header-menu-link.active {
+.header-nav-link.active,
+.mobile-menu-link.active {
   color: var(--ocean);
 }
-.header-menu-link::after {
+.header-nav-link::after {
   content: "";
   display: block;
   width: 100%;
@@ -176,21 +222,24 @@ body {
   border-radius: 2px;
 }
 
-.header-menu-link.active::after {
+.header-nav-link.active::after {
   background-color: var(--ocean);
   position: absolute;
   bottom: -1px;
-}
-
-.header-nav {
-  display: flex;
-  align-items: center;
 }
 
 .header .logo {
   display: inline-flex;
   align-items: center;
   margin-right: 76px;
+  padding: 16px 0;
+}
+
+@media screen and (max-width: 767px) {
+  .header .logo {
+    padding: 24px 0;
+    margin-right: auto;
+  }
 }
 
 .logo {
@@ -208,21 +257,24 @@ body {
   color: var(--navy-blue);
 }
 
-.header .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .contacts {
   font-style: normal;
+  margin-left: 121px;
+
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
 }
 
 .contacts-menu {
   list-style: none;
-
   display: flex;
-  gap: 40px;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  @media screen and (min-width: 1158px) {
+    gap: 40px;
+  }
 }
 
 .contacts-menu-link {
@@ -551,8 +603,7 @@ footer {
 p {
   font-size: 16px;
 }
-.footer-text {
-}
+
 .footer .container {
   display: flex;
   flex-wrap: wrap;
@@ -611,7 +662,6 @@ p {
   font-weight: 500;
   line-height: 1.5; /* 150% */
   letter-spacing: 0.02em;
-
 }
 .footer-sub-form {
   display: flex;
@@ -655,14 +705,13 @@ p {
 }
 
 @media screen and (max-width: 767px) {
-  .footer-logo,
+  .footer-text,
   .footer-social,
   .footer-sub {
     justify-content: center;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-
   }
 }
 
@@ -670,7 +719,6 @@ p {
 
 /* #region Modal */
 .modal-overlay {
-  display: none;
   position: fixed;
   left: 0;
   top: 0;
@@ -678,8 +726,18 @@ p {
   height: 100%;
   background-color: rgba(46, 47, 66, 0.4);
 
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+
   transition: var(--animation-fast);
   transition-property: opacity, visibility;
+}
+.modal-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: initial;
 }
 .modal {
   position: absolute;
@@ -698,8 +756,18 @@ p {
 
   padding: 72px 24px 24px 24px;
 
+  scale: 0.1;
   transition: var(--animation-fast);
-  transition-property: transform;
+  transition-property: scale;
+  
+}
+.modal-overlay.is-open .modal {
+  scale: 1;
+}
+@media screen and (max-width: 767px) {
+  .modal {
+    width: 288px;
+  }
 }
 .modal-close-button {
   display: flex;
@@ -887,6 +955,95 @@ input[type="checkbox"]:checked + label .modal-agreement-checkbox {
 }
 /* #endregion */
 
-.is-open {
-  display: block;
+/* #region Header menu */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition: var(--animation-fast);
+  transition-property: opacity, visibility;
 }
+.backdrop.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: initial;
+  transition-delay: 0ms;
+}
+
+.mobile-menu {
+  background-color: var(--cloud);
+  width: 320px;
+  height: 100%;
+  padding: 24px 24px 40px 16px;
+
+  display: flex;
+  flex-direction: column;
+
+  outline: 2px solid red;
+  outline-offset: -2px;
+
+  transform: translateX(100%);
+  transition: var(--animation-fast);
+  transition-property: transform;
+}
+.backdrop.is-open .mobile-menu {
+  transform: translateX(0);
+}
+
+.mobile-menu-button {
+  width: 24px;
+  height: 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid var(--cornflower);
+
+  color: var(--navy-blue);
+  cursor: pointer;
+}
+.mobile-button-icon {
+  width: 8px;
+  height: 8px;
+
+  fill: currentColor;
+}
+.mobile-menu-links {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.11;
+  letter-spacing: 0.02em;
+
+  margin-top: 24px;
+}
+
+.mobile-menu-item {
+  padding: 0;
+}
+
+.mobile-contacts-menu {
+  margin-bottom: 48px;
+  margin-top: auto;
+
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.2; /* 120% */
+  letter-spacing: 0.02em;
+}
+.mobile-social-list {
+  justify-content: flex-start;
+  gap: 40px;
+}
+/* #endregion */
