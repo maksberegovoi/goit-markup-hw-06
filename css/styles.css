@@ -104,7 +104,6 @@ a {
   clip: rect(0 0 0 0);
   overflow: hidden;
 }
-
 body {
   font-family: var(--font-family);
   color: var(--slate);
@@ -617,6 +616,10 @@ p {
     row-gap: 72px;
     column-gap: 24px;
   }
+
+  @media screen and (min-width: 768px) and (max-width: 1157px) {
+    padding-left: 108px;
+  }
 }
 .footer-social {
   @media screen and (min-width: 1158px) {
@@ -730,7 +733,6 @@ p {
   visibility: hidden;
   pointer-events: none;
 
-
   transition: var(--animation-fast);
   transition-property: opacity, visibility;
 }
@@ -759,7 +761,6 @@ p {
   scale: 0.1;
   transition: var(--animation-fast);
   transition-property: scale;
-  
 }
 .modal-overlay.is-open .modal {
   scale: 1;
@@ -984,10 +985,7 @@ input[type="checkbox"]:checked + label .modal-agreement-checkbox {
   display: flex;
   flex-direction: column;
 
-  outline: 2px solid red;
-  outline-offset: -2px;
-
-  transform: translateX(100%);
+  transform: translateX(-100%);
   transition: var(--animation-fast);
   transition-property: transform;
 }
