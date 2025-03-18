@@ -291,7 +291,7 @@ body {
 .hero {
   background: var(--navy-blue);
   background-image: linear-gradient(var(--grey), var(--grey)),
-    url("../images/hero-bg.jpg");
+    url("../images/hero/Dark-bg_mobile.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -300,6 +300,30 @@ body {
   max-width: 1440px;
   width: 100%;
   margin: 0 auto;
+
+  @media (min-resolution: 192dpi) {
+    background-image: linear-gradient(var(--grey), var(--grey)),
+      url("../images/hero/Dark-bg_mobile@2x.jpg");
+  }
+
+  @media only screen and (min-width: 768px) {
+    background-image: linear-gradient(var(--grey), var(--grey)),
+      url("../images/hero/Dark-bg_tablet.jpg");
+
+    @media (min-resolution: 192dpi) {
+      background-image: linear-gradient(var(--grey), var(--grey)),
+        url("../images/hero/Dark-bg_tablet@2x.jpg");
+    }
+  }
+  @media only screen and (min-width: 1158px) {
+    background-image: linear-gradient(var(--grey), var(--grey)),
+      url("../images/hero/Dark-bg_desk.jpg");
+
+    @media (min-resolution: 192dpi) {
+      background-image: linear-gradient(var(--grey), var(--grey)),
+        url("../images/hero/Dark-bg_desk@2x.jpg");
+    }
+  }
 }
 
 .btn {
