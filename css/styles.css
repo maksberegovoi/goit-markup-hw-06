@@ -285,6 +285,23 @@ body {
 .contacts-menu-link {
   transition: var(--animation-fast);
   transition-property: color;
+
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.16; /* 116.667% */
+  letter-spacing: 0.04em;
+
+  width: 119px;
+  height: 14px;
+
+  @media screen and (min-width: 1158px) {
+    font-size: 16px;
+    line-height: 1.5; /* 150% */
+    letter-spacing: 0.02em;
+
+    width: 153px;
+    height: 24px;
+  }
 }
 
 .contacts-menu-link:hover,
@@ -478,11 +495,9 @@ body {
   margin-bottom: 72px;
 
   @media screen and (min-width: 768px) {
-      
   }
-  
+
   @media screen and (min-width: 1158px) {
-      
   }
 }
 
@@ -618,13 +633,9 @@ body {
 }
 
 .portfolio-list-title {
-  padding-left: 16px;
   margin-bottom: 8px;
 }
 
-.portfolio-item-desc {
-  padding-left: 16px;
-}
 .portfolio-title {
   letter-spacing: 0.02em;
   text-transform: capitalize;
